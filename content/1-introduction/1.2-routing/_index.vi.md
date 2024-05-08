@@ -35,7 +35,7 @@ Dưới đây là hình minh hoạ các tài nguyên có thể kết nối với
 **AWS Transit Gateway route table** là một thực thể logic chứa tập hợp các tuyến đường (route) xác định cách chuyển tiếp
 lưu lượng giữa các tài nguyên được kết nối với Transit Gateway. Khi tạo một AWS Transit Gateway mới, một bảng định tuyến
 mặc định sẽ được tự động tạo ra. Nếu như chúng ta tắt tính năng route table association và route propagation thì AWS sẽ 
-không tạo ra bảng định tuyến mặc định này.
+không tạo ra bảng định tuyến mặc định này. Bạn có thể tự tạo thêm các bảng định tuyến cho AWS Transit Gateway.
 
 Mỗi attachment chỉ có thể liên kết với một bảng định tuyến, propagate routes đến một hoặc nhiều bảng định tuyến.
 <!-- TODO: Thêm hình nếu có thể, VD về bảng định tuyến xem trông thế nào -->
@@ -70,25 +70,77 @@ Mỗi attachment (VD: VPC, VPN, Direct Connect Gateway) đều có sẵn một t
 VD: Giả sử bạn có VPC A, VPC B đã kết nối đến Transit Gateway bằng VPC A attachment và VPC B attachment. 
 Bạn tạo một custom Transit Gateway route table và liên kết với VPC A attachment. Sau đó bạn tạo propagation giữa
 VPC B attachment và route table này. Khi đó route sau sẽ tự động được thêm vào route table:
-<!-- TODO: Format giống AWS: https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-peering-scenario.html -->
-VPC B Cidr -> VPC B attachment
+
+| Destination  | Target  |  Route type |
+|---|---|---|
+| VPC B CIDR | Attachment ID for VPC B | Propagated |
 
 Vì VPC A attachment đã được liên kết với route table này nên route mới được thêm vào sẽ được propagate đến nó. Khi đó
 VPC A có thể kết nối được đến VPC B thông qua Transit Gateway.
 
 #### Route table association vs. Route propagation
-The key difference is that association determines which route table is used for a specific attachment, while propagation ensures the routes in that table are applied to the attachment, enabling connectivity between the connected resources.
-<!-- TODO: VD giống trong vid: https://www.youtube.com/watch?v=AlPK4meZrLA -->
-Chứng minh: "while propagation ensures the routes in that table are applied to the attachment"
-Có 2 Prod VPC, chỉ cho phép 2 VPC này kết nối với nhau, không cho VPC NonProd kết nối đến => Không được associate chung
-vào một table.
-Tuy nhiên nếu chỉ muốn NonProd VPC 2 được két nối với các ProdVPC thì phải làm sao? Đó là dùng propagation như VD trên.
+Điểm khác biệt chính giữa association và propagation là route table association xác định bảng định tuyến nào được sử dụng cho một
+attachment cụ thể còn route propagation đảm bảo các tuyến đường (route) trong bảng định tuyến đó được áp dụng cho attachment,
+cho phép tạo kết nối giữa các tài nguyên.
 
-Sửa lại ví dụ:
-2 Prod VPC là 2 service trong microservice là product và order service chẳng hạn. Còn 2 NonProd VPC là analytics service.
-Trong trường hợp cần thông kê data, một service analytics NonProd VPC cần kết nối đến 2 Prod VPC -> Dùng propagation.
+Hãy tưởng tượng Transit Gateway giống như một thư viện có các giá sách khác nhau, mỗi giá sách là một route table, mỗi
+quyển sách là một route. Route table association giống như cấp cho ai đó một thẻ thư viện (quyền xem các quyển sách). 
+Route propagation giống như việc cho phép họ mượn sách (quyền sử dụng các quyển sách).
 
-Bảng định tuyến ProdVPC chỉ có 2 Prod mà ko có Analytics vì muốn control network traffic trong prod network chứa các service này.
+Hãy cùng tìm hiểu ví dụ dưới đây để hiểu rõ hơn về sự khác biệt này.
+
+Giả sử chúng ta cần phát triển một hệ thống thương mại điện tử sử dụng kiến trúc microservice bao gồm 4 dịch vụ 
+Product, Order, Analyzer và Visualizer. Trong đó vai trò của các dịch vụ như sau:
+- Product: Xử lý các yêu cầu liên quan đến sản phẩm
+- Order: Xử lý các yêu cầu liên quan đến việc mua hàng
+- Analyzer: Thống kê số lượng sản phẩm, số lượng đơn hàng, doanh thu...
+- Visualizer: Sử dụng dữ liệu từ dịch vụ Analyzer để tạo ra các bảng, biểu đồ
+
+Mỗi dịch vụ đã được triển khai trên VPC tương ứng là Product VPC, Order VPC, Analyzer VPC, Visualizer VPC. Tất cả các VPC đều
+đã được kết nối đến cùng một AWS Transit Gateway bằng các attachment Product Attachment, Order Attachment,
+Analyzer Attachment, Visualizer Attachment.
+
+Vì chúng ta cần release sản phẩm đến tay người dùng sớm nhất có thể cho nên chúng ta ưu tiên release hai dịch vụ Product và
+Order trước, sau đó tiếp tục phát triển hai dịch vụ Analyzer và Visualizer. Vì dịch vụ Analyzer vẫn đang phát triển nên chưa
+thể sử dụng thực tế được, do đó chúng ta chưa cần kết nối dịch vụ này với hai dịch vụ đã release. Vì vậy, chúng ta sẽ có 
+hai môi trường là **production** gồm hai dịch vụ Product, Order và **non-production** gồm hai dịch vụ Analyzer và Visualizer.
+
+Khi đó, chúng ta cần cấu hình mạng như sau:
+- Dịch vụ Product và Order có thể kết nối với nhau
+- Dịch vụ Analyzer và Visualizer có thể kết nối với nhau
+- Các dịch vụ Analyzer, Visualizer không thể kết nối đến các dịch vụ Product và Order
+
+Trong trường hợp này, chúng ta không nên sử dụng một bảng định tuyến duy nhất liên kết với tất cả các attachment vì những
+vấn đề sau:
+- Security Isolation: Nếu như liên kết tất cả các attachment với cùng một bảng định tuyến thì không thể tách biệt cấu hình
+bảo mật giữa môi trường production và non-production. Trong nhiều trường hợp cấu hình giữa hai môi trường này khác nhau,
+nên cách cấu hình này không đủ linh hoạt.
+
+- Unnecessary Propagation: Propagate routes từ các VPC của môi trường production tới các VPC của môi trường non-production
+là không cần thiết vì các VPC này không cần kết nối đến nhau. Việc cấu hình làm tăng sự phức tạp và có thể làm chậm
+quá trình định tuyến giữa các mạng với nhau.
+
+Để khắc phục được những vấn đề trên, chúng ta có thể tạo hai bảng định tuyến tuỳ chỉnh:
+- ProductionRTB: liên kết với Product Attachment và Order Attachment
+- NonProductionRTB: liên kết với Analyzer Attachment và Visualizer Attachment
+
+Bằng cách này, chúng ta đã chỉ định bảng định tuyến cho các attachment và tách biệt cấu hình giữa môi trường production
+và non-production. Đây cũng chính là kỹ thuật sử dụng nhiều bảng định tuyến được sử dụng trong các phần tiếp theo.
+
+Giả sử sau khi phát triển xong, chúng ta muốn kết nối dịch vụ Analyzer đến các dịch vụ Product, Order để thống kê và 
+làm báo cáo doanh thu. Vì dịch vụ Visualizer chỉ cần lấy dữ liệu từ dịch vụ Analyzer nên, chúng ta chỉ cần kết nối 
+Analyzer VPC với Product VPC và Order VPC là đủ. Chúng ta có thể làm điều này một cách dễ dàng bằng việc tạo propagation 
+giữa bảng định tuyến ProductionRTB và Analyzer Attachment. Khi đó, một route mới cho phép định tuyến lưu lượng đến 
+Analyzer Attachment sẽ tự động được tạo và propagate đến các attachment Product và Order.
 
 #### Routes for peering attachments
+You can peer two transit gateways, and route traffic between them. To do this, you create a peering attachment on your transit gateway, and specify the peer transit gateway with which to create the peering connection. You then create a static route in your transit gateway route table to route traffic to the transit gateway peering attachment. Traffic that's routed to the peer transit gateway can then be routed to the VPC and VPN attachments for the peer transit gateway.
+
 Limitations: Peering attachments between Transit Gateways do not support automatic route propagation. In such cases, you need to manually create static routes in the Transit Gateway route tables to route traffic between the peered Transit Gateways.
+
+Bạn có thể kết nối hai Transit Gateway với nhau bằng cách peering giống như việc kết nối hai VPC bằng VPC Peering.
+Để làm được điều đó, bạn cần tạo một peering attachment trong một transit gateway và chỉ định transit gateway còn lại để
+thiết lập kết nối. Vì peering attachment không hỗ trợ tự động propagate routes cho nên bạn cần phải tạo một tuyến đường tĩnh
+để định tuyến lưu lượng. Lưu lượng sau khi được định tuyến đến peered transit gateway có thể tiếp tục được định tuyến
+tới các attachment kết nối với transit gateway đó.
+<!-- Thêm sơ đồ peering, mỗi peering có các VPC và VPN attachment -->
