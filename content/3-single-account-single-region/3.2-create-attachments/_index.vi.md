@@ -1,12 +1,12 @@
 ---
-title : "Tạo transit gateway attachments"
+title : "Tạo transit gateway và các attachment"
 date : "`r Sys.Date()`"
-weight : 1
+weight : 2
 chapter : false
-pre : " <b> 3.1 </b> "
+pre : " <b> 3.2 </b> "
 ---
 
-Trong bước này, chúng ta sẽ cùng tạo AWS Transit Gateway và các attachment sau đó gắn vào các VPC đã tạo ở bước trước.
+Trong bước này, chúng ta sẽ cùng tạo AWS Transit Gateway và các attachment sau đó kết nối với các VPC đã tạo ở bước trước.
 
 1\. Tìm kiếm từ khoá `vpc` rồi chọn service **VPC**
 ![Create attachments](/images/3-single-account-single-region/create_attachments_1.png)
@@ -20,7 +20,8 @@ Trong bước này, chúng ta sẽ cùng tạo AWS Transit Gateway và các atta
   - Description: `Transit Gateway for region Tokyo`
   ![Create attachments](/images/3-single-account-single-region/create_attachments_3.png)
 
-3\. Sau khi transit gateway có trạng thái **Available** thì tạo các transit gateway attachment
+3\. Tạo attachments
+Sau khi Transit Gateway vừa tạo có trạng thái sẵn sàng, bạn có thể tạo các attachment.
 - Tại giao diện của VPC chọn **Transit gateway attachments**
 - Bấm **Create transit gateway attachment**
 ![Create attachments](/images/3-single-account-single-region/create_attachments_4.png)
@@ -32,7 +33,7 @@ Trong bước này, chúng ta sẽ cùng tạo AWS Transit Gateway và các atta
   ![Create attachments](/images/3-single-account-single-region/create_attachments_5.png)
 - Bấm **Create transit gateway attachment**
 
-4\. Lặp lại bước trên để tạo thêm 2 transit gateway attachment nữa:
+Lặp lại bước trên để tạo thêm 2 transit gateway attachment nữa với cấu hình như sau:
 - `test-att` attachment gắn với **test-vpc** VPC
 ![Create attachments](/images/3-single-account-single-region/create_attachments_6.png)
 - `share-att` attachment gắn với **share-vpc** VPC

@@ -1,11 +1,12 @@
 ---
-title : "Cấu hình bảng định tuyến"
+title : "Cấu hình định tuyến"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
 pre : " <b> 4.2 </b> "
 ---
-#### Transit Gateway Peering
+
+Trong bước này, chúng ta sẽ cấu hình định tuyến để kết nối Share VPC với Branch VPC.
 
 1\. Tại giao diện **Transit gateways** của region Tokyo, chọn **tokyo-tgw** rồi sao chép id của transit gateway này
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_1.png)
@@ -52,14 +53,15 @@ Tạo propagation từ **peering-tokyo-tgw-rtb** đến **branch-att** attachmen
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_19.png)
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_20.png)
 
-Lặp lại các bước trên để tạo một transit gateway route table mới tên là `peering-singapore-tgw-rtb` và thêm association với **peering-singapore**, propagation tới **share-att** như sau:
+Lặp lại các bước trên để tạo một transit gateway route table mới trong region Tokyo tên là `peering-singapore-tgw-rtb` và thêm association với **peering-singapore**, propagation tới **share-att** như sau:
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_21.png)
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_22.png)
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_23.png)
 
-<!-- TODO: Update text, change to note -->
-Note: Khi bạn tạo associate với **peering-singapore** attachment, có thể bạn sẽ gặp lỗi như sau. Nguyên nhân là vì hiện 
+{{% notice note %}}
+Khi bạn tạo associate với **peering-singapore** attachment, có thể bạn sẽ gặp lỗi như sau. Nguyên nhân là vì hiện 
 tại attachment này đang được associate với **default-tgw-rtb**, bạn cần phải xoá association này trước rồi mới tạo được association mới.
+{{% /notice %}}
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_24.png)
 Xoá association giữa **peering-singapore** attachment và bảng định tuyến **default-tgw-rtb**.
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_25.png)
@@ -94,5 +96,6 @@ ping <branch_instance_private_ipv4> -c5
 Kết quả cho thấy chúng ta đã cấu hình thành công.
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_34.png)
 
+#### Tự thực hành
 Hãy thử lặp lại các bước trên để cấu hình kết nối giữa Test VPC và Branch VPC và kiểm tra cấu hình của bạn.
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_35.png)

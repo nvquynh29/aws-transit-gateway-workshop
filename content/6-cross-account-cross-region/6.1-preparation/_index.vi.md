@@ -6,7 +6,9 @@ chapter : false
 pre : " <b> 6.1 </b> "
 ---
 
-Sử dụng tài khoản B chuyển region sang Singapore rồi thực hiện các bước sau đây.
+Trong bước này, chúng ta sẽ triển khai một VPC và một EC2 instance chạy trong đó trong region Singapore của tài khoản thứ hai.
+
+Sử dụng tài khoản thứ hai chuyển region sang Singapore rồi thực hiện các bước sau đây.
 
 #### Customer VPC
 - Truy cập dịch vụ **CloudFormation**

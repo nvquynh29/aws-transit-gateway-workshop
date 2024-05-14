@@ -5,11 +5,12 @@ weight : 1
 chapter : false
 pre : " <b> 4.1 </b> "
 ---
-Trong bước này chúng ta sẽ triển khai một VPC và một máy ảo EC2 trong region **ap-southeast-1 (Singapore)**, tạo một AWS
-Transit Gateway và bảng định tuyến.
+
+Trong bước này chúng ta sẽ triển khai các tài nguyên như VPC, EC2 instance, AWS Transit Gateway và bảng định tuyến trong
+region **ap-southeast-1 (Singapore)**.
 
 #### CloudFormation Stack
-Phần triển khai này rất giống với phần 2, chỉ có một vài điểm cần lưu ý sau đây:
+Phần triển khai này rất giống với phần trước, chỉ có một vài điểm cần lưu ý sau đây:
 - Sử dụng file **VPC.yaml**
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_1.png)
 
@@ -21,7 +22,7 @@ Phần triển khai này rất giống với phần 2, chỉ có một vài đi�
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_2.png)
 
 #### Transit Gateway
-1\. Truy cập vào **VPC**, chọn **Transit gateways** rồi bấm **Create transit gateway**
+1\. Truy cập dịch vụ VPC, chọn **Transit gateways** rồi bấm **Create transit gateway**
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_3.png)
 
 Cấu hình transit gateway như sau:
@@ -36,7 +37,7 @@ propagation với bảng định tuyến mặc định.
 
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_4.png)
 
-2\. Tạo thêm một transit gateway attachment nữa với cấu hình như sau
+2\. Tạo một transit gateway attachment nữa với cấu hình như sau
 - Name tag: `branch-att`
 - Transit gateway ID: Chọn **singapore-tgw**
 - Attachment Type: **VPC**
@@ -58,5 +59,5 @@ với **branch-att** attachment.
 ![Configure route tables](/images/4-single-account-cross-region/configure_route_tables_8.png)
 
 {{% notice note %}}
-Hãy mở sẵn 2 tab chọn region Tokyo và Singapore trong trình duyệt của bạn, để tiết kiệm thời gian chuyển region.
+Hãy mở sẵn 2 tab chọn region Tokyo và Singapore trong trình duyệt của bạn để tiết kiệm thời gian khi cấu hình.
 {{% /notice %}}

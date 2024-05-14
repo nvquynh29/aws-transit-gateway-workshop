@@ -6,9 +6,11 @@ chapter : false
 pre : " <b> 5.1 </b> "
 ---
 
-<!-- TODO: Update text -->
 Bạn cần có thêm một tài khoản AWS để thực hiện các bước trong phần này. Tuy nhiên nếu như bạn chưa có tài khoản AWS thứ 
-hai thì cũng có thể theo dõi các bước dưới đây để hiểu cách hoạt động và cấu hình kết nối 2 VPC thuộc hai tài khoản AWS khác nhau nhưng thuộc cùng một region.
+hai thì cũng có thể theo dõi các bước dưới đây để hiểu cách hoạt động và cấu hình kết nối hai VPC thuộc hai tài khoản AWS khác nhau nhưng thuộc cùng một region.
+
+Trong bước này chúng ta sẽ cùng triển khai một VPC và một EC2 instance chạy trong VPC này trong region Tokyo của
+tài khoản AWS thứ hai.
 
 1. Đăng nhập vào tài khoản AWS thứ hai bằng cửa sổ ẩn danh hoặc trình duyệt khác và hãy đảm bảo rằng bạn giữ cửa sổ này bật để có thể sử dụng đồng thời 2 tài khoản một cách dễ dàng.
 2. Chọn region **ap-northeast-1 (Tokyo)**
