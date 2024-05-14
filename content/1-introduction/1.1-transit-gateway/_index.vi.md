@@ -19,13 +19,13 @@ tiềm ẩn rất nhiều rủi ro về bảo mật, không đáng tin cậy và
 **VPC Peering** là tính năng cho phép kết nối hai hoặc nhiều Amazon VPC với nhau thông qua hệ thống mạng riêng của AWS, 
 không sử dụng đường truyền Internet. Khi sử dụng VPC Peering để kết nối 2 VPC, các tài nguyên trong một mạng có thể 
 kết nối với các tài nguyên trong mạng còn lại thông qua địa chỉ IP riêng tư như thể chúng nằm trong cùng một mạng.
-![VPC Peering](/images/1-introduction/vpc_peering.png)
+![VPC Peering](/images/1-introduction/vpc_peering.svg)
 
 Tuy VPC Peering là một tính năng hiệu quả để kết nối các VPC với nhau nhưng nó cũng có một số nhược điểm. Một trong số đó
 phải kể đến là khi phải số lượng kết nối lớn khi cần kết nối nhiều VPC. VPC Peering có đặc điểm là không có tính chất bắc cầu,
 tức là trong trường hợp VPC A đã peering với VPC B, VPC B đã peering với VPC C thì VPC A không kết nối được đến VPC C. 
 Ngoài ra một Amazon VPC không thể peering với quá nhiều VPC khác.
-![VPC Peering Overwhelmed](/images/1-introduction/vpc_peering_overwhelmed.png)
+![VPC Peering Overwhelmed](/images/1-introduction/vpc_peering_overwhelmed.svg)
 Khi cần kết nối nhiều VPC với nhau, cấu hình định tuyến sẽ trở nên rất phức tạp và khó quản lý cũng như xử lý sự cố.
 
 #### AWS Transit Gateway
@@ -45,7 +45,7 @@ tập trung cung cấp cái nhìn tổng quan, rõ rằng về lưu lượng m�
 Vì những ưu điểm này, AWS Transit Gateway đã trở thành lựa chọn phổ biến để triển khai các cấu hình mạng phức tạp. Nó
 đặc biệt phù hợp với các tổ chức cần triển khai hệ thống quy mô lớn, cần kết nối nhiều VPC, VPN Connection và mạng on-premises
 trong khi vẫn đảm bảo hiệu suất, khả năng quản lý và mở rộng.
-![AWS Transit Gateway](/images/1-introduction/aws_transit_gateway.png)
+![AWS Transit Gateway](/images/1-introduction/aws_transit_gateway.svg)
 
 Để sử dụng hiệu quả Transit Gateway, cần phải hiểu được các tình huống có thể liên quan:
 - Các VPC nằm trên cùng tài khoản AWS, cùng region

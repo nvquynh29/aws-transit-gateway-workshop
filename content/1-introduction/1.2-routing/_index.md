@@ -27,7 +27,7 @@ Types of AWS Transit Gateway Attachments:
 This workshop will focus on two specific attachment types: **VPC** and **Peering Connection**.
 
 Resources that can connect to Transit Gateway via attachment are shown in the figure below.
-![AWS Transit Gateway Attachment](/images/1-introduction/aws_transit_gateway.png)
+![AWS Transit Gateway Attachment](/images/1-introduction/aws_transit_gateway.svg)
 
 #### Route table
 **AWS Transit Gateway route table** is a logical entity that holds a collection of routes (route) defining how to forward 
@@ -36,7 +36,6 @@ is automatically generated. However, if you disable route table association and 
 AWS will not create this default route table. You can also create additional route tables for your AWS Transit Gateway.
 
 Each attachment can only be associated with one route table and propagate routes to one or more route tables.
-<!-- TODO: Thêm hình nếu có thể, VD về bảng định tuyến xem trông thế nào -->
 
 This workshop will focus on two types of route tables: **Transit Gateway route table** and **VPC route table**.
 - **Transit Gateway route table**: Manages traffic routing between VPCs, on-premises networks, and attachments 
@@ -59,7 +58,7 @@ Consider *VPC A* connected to Transit Gateway via the *VPC A* attachment. Creati
 associating it with the *VPC A* attachment allows you to define a route to an on-premises network (e.g., 10.2.0.0/16). 
 This route is automatically propagated to the attachment, enabling resources in *VPC A* to connect to the on-premises network 
 without explicit VPC-to-on-premises network routing configuration.
-<!-- TODO: Thêm hình mô tả propagation, route table, onpremise network -->
+![Route table association](/images/1-introduction/route_table_association.svg)
 
 While route propagation simplifies network management, AWS Transit Gateway Policy Table offers an advanced mechanism for 
 filtering and controlling routes propagated to specific attachments. However, due to its complexity, this feature will not 
@@ -85,6 +84,7 @@ VPC B attachment and this route table. The following route will automatically be
 
 The newly added route will be propagated to VPC A attachment because it is already associated with this route table,
 this configuration allows VPC A to connect to VPC B through Transit Gateway.
+![Route propagation](/images/1-introduction/route_propagation.svg)
 
 #### Route table association vs. Route propagation
 By understanding the concepts of route propagation and its implementation within AWS Transit Gateway attachments, you can effectively manage network traffic flow, simplify network configuration, and enhance the overall efficiency of your cloud infrastructure.
@@ -130,6 +130,7 @@ and *non-production* environments. The technique of using multiple route tables 
 Once Analyzer is ready, it needs to connect to Product and Order for data analysis and revenue reporting. Visualizer only 
 requires data from Analyzer, hence connecting Analyzer VPC to Product VPC and Order VPC suffices. This can be achieved by creating propagation between ProductionRTB and Analyzer Attachment. Consequently, a new route enabling traffic routing to Analyzer Attachment 
 is automatically generated and propagated to Product and Order attachments.
+![Association vs Propagation](/images/1-introduction/association_vs_propagation.svg)
 
 #### Routes for peering attachments
 Similar to VPC peering, AWS Transit Gateway enables the interconnection of two Transit Gateways, facilitating seamless 
@@ -137,4 +138,4 @@ communication between networks. To achieve this, a peering attachment is created
 the peer Transit Gateway to establish the connection. Since peering attachments do not automatically propagate routes,
 manual configuration of static routes is required to direct traffic to the peered Transit Gateway. 
 Once traffic reaches the peered Transit Gateway, it can be further routed to its connected attachments.
-<!-- Thêm sơ đồ peering, mỗi peering có các VPC và VPN attachment -->
+![Transit Gateway peering](/images/1-introduction/transit_gateway_peering.svg)

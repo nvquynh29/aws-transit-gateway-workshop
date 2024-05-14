@@ -28,7 +28,7 @@ AWS Transit Gateway attachment có các loại:
 Trong workshop này chúng ta sẽ sử dụng 2 loại attachment đó là **VPC** và **Peering Connection**.
 
 Dưới đây là hình minh hoạ các tài nguyên có thể kết nối với Transit Gateway thông qua attachment.
-![AWS Transit Gateway Attachment](/images/1-introduction/aws_transit_gateway.png)
+![AWS Transit Gateway Attachment](/images/1-introduction/aws_transit_gateway.svg)
 
 #### Route table
 **AWS Transit Gateway route table** là một thực thể logic chứa tập hợp các tuyến đường (route) xác định cách chuyển tiếp
@@ -37,7 +37,6 @@ mặc định sẽ được tự động tạo ra. Nếu như chúng ta tắt t�
 không tạo ra bảng định tuyến mặc định này. Bạn có thể tự tạo thêm các bảng định tuyến cho AWS Transit Gateway.
 
 Mỗi attachment chỉ có thể liên kết với một bảng định tuyến, propagate routes đến một hoặc nhiều bảng định tuyến.
-<!-- TODO: Thêm hình nếu có thể, VD về bảng định tuyến xem trông thế nào -->
 
 This workshop will focus on two types of route tables: **Transit Gateway route table** và **VPC route table**.
 - **Transit Gateway route table**: Manages traffic routing between VPCs, on-premises networks, and attachments 
@@ -67,7 +66,7 @@ Bạn tạo một custom Transit Gateway route table và liên kết với VPC A
 route đến on-premises network (VD: 10.2.0.0/16). Vì VPC A attachment đã liên kết với bảng định tuyến
 này nên route đến on-premises network tự động được propagate đến nó. Điều này cho phép các tài nguyên trong VPC A 
 kết nối được đến on-premises network thông qua Transit Gateway mặc dù không cấu hình định tuyến từ VPC đến on-premises network.
-<!-- TODO: Thêm hình mô tả propagation, route table, onpremise network -->
+![Route table association](/images/1-introduction/route_table_association.svg)
 
 Bạn cũng có thể cấu hình **Transit Gateway policy table** để kiểm soát và lọc các route được propagate
 đến một attachment cụ thể. Tuy nhiên để sử dụng tính năng này, bạn cần phải có hiểu biết nhất định về AWS Transit Gateway, 
@@ -91,6 +90,7 @@ VPC B attachment và route table này. Khi đó route sau sẽ tự động đư
 
 Vì VPC A attachment đã được liên kết với route table này nên route mới được thêm vào sẽ được propagate đến nó. Khi đó
 VPC A có thể kết nối được đến VPC B thông qua Transit Gateway.
+![Route propagation](/images/1-introduction/route_propagation.svg)
 
 #### Route table association vs. Route propagation
 Điểm khác biệt chính giữa association và propagation là route table association xác định bảng định tuyến nào được sử dụng cho một
@@ -146,6 +146,7 @@ làm báo cáo doanh thu. Vì dịch vụ Visualizer chỉ cần lấy dữ li�
 Analyzer VPC với Product VPC và Order VPC là đủ. Chúng ta có thể làm điều này một cách dễ dàng bằng việc tạo propagation 
 giữa bảng định tuyến ProductionRTB và Analyzer Attachment. Khi đó, một route mới cho phép định tuyến lưu lượng đến 
 Analyzer Attachment sẽ tự động được tạo và propagate đến các attachment Product và Order.
+![Association vs Propagation](/images/1-introduction/association_vs_propagation.svg)
 
 #### Routes for peering attachments
 Bạn có thể kết nối hai Transit Gateway với nhau bằng cách peering giống như việc kết nối hai VPC bằng VPC Peering.
@@ -153,4 +154,4 @@ Bạn có thể kết nối hai Transit Gateway với nhau bằng cách peering 
 thiết lập kết nối. Vì peering attachment không hỗ trợ tự động propagate routes cho nên bạn cần phải tạo một tuyến đường tĩnh
 để định tuyến lưu lượng. Lưu lượng sau khi được định tuyến đến peered transit gateway có thể tiếp tục được định tuyến
 tới các attachment kết nối với transit gateway đó.
-<!-- Thêm sơ đồ peering, mỗi peering có các VPC và VPN attachment -->
+![Transit Gateway peering](/images/1-introduction/transit_gateway_peering.svg)

@@ -13,9 +13,8 @@ EC2 instance within each VPC. This will serve for connectivity testing with othe
 once network configuration is complete.
 
 #### Deploy CloudFormation Stack
-<!-- TODO: Thêm mô tả hoặc thêm scenario vào index của 3. -->
-This step will.... deploy 3 VPCs in region Tokyo.
-![Initial VPCs](/images/3-single-account-single-region/initial_vpcs.png)
+We will deploy three VPCs as follows by CloudFormation service.
+![Initial VPCs](/images/3-single-account-single-region/initial_vpcs.svg)
 
 1\. Within the AWS Management Console interface:
 - Search keyword: `cloudformation`

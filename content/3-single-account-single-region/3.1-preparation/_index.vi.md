@@ -9,8 +9,8 @@ pre : " <b> 3.1 </b> "
 Trong bước này, chúng ta sẽ cùng triển khai các tài nguyên như VPC và máy ảo EC2 để chuẩn bị cho các bước cấu hình mạng tiếp theo. Trong các bước tiếp theo, cấu hình mạng sẽ tương đối phức tạp, đặt biệt là route table. Vì mục tiêu chính của workshop này là hiểu được cách hoạt động của AWS Transit Gateway nên trong mỗi VPC, chúng ta sẽ chỉ tạo 1 EC2 instance để kiểm tra kết nối đến EC2 instance trong các VPC khác sau khi đã cấu hình mạng.
 
 #### Triển khai CloudFormation Stack
-<!-- TODO: Thêm mô tả hoặc thêm scenario vào index của 3. -->
-![Initial VPCs](/images/3-single-account-single-region/initial_vpcs.png)
+Chúng ta sẽ triển khai ba VPC như sau bằng dịch vụ CloudFormation.
+![Initial VPCs](/images/3-single-account-single-region/initial_vpcs.svg)
 
 1\. Tại giao diện của AWS Console:
 - Tìm kiếm từ khoá: `cloudformation`
