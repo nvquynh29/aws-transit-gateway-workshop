@@ -8,8 +8,7 @@ pre : " <b> 1. </b> "
 
 Trong phần này chúng ta sẽ cùng tìm hiểu về AWS Transit Gateway và cơ chế định tuyến của nó.
 
-![AWS Transit Gateway](/images/1-introduction/aws_transit_gateway_official_docs.png)
-Nguồn: [Tài liệu chính thức của AWS](https://aws.amazon.com/transit-gateway/)
+![AWS Transit Gateway](/images/1-introduction/transit_gateway_routing_mechanism.png)
 
 #### Nội dung
 

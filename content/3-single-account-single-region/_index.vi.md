@@ -21,7 +21,7 @@ Với những trường hợp cần kết nối ít VPC như vậy, sử dụng 
 sẽ cùng tìm hiểu một cách cấu hình khác đó là sử dụng AWS Transit Gateway. Để cho việc triển khai đơn giản hơn, chúng ta
 sẽ chỉ triển khai một máy ảo EC2 trong mỗi VPC để kiểm tra kết nối mạng. Trong phần này, chúng ta sẽ cùng cấu hình
 mạng như sau:
-<!-- TODO: Sơ đồ 3 VPC kết nối với nhau thông qua VPC, có bảng định tuyến -->
+![Diagram](/images/3-single-account-single-region/single_account_single_region.svg)
 
 #### Nội dung
 

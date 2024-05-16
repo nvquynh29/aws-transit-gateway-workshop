@@ -18,7 +18,7 @@ cẩn thận nên rất dễ xảy ra lỗi khi khách hàng sử dụng. Thay v
 vì môi trường Test đã được kiểm thử cẩn thận và môi trường Dev đang sử dụng chung data source với môi trường này nên 
 nó có thể đáp ứng được yêu cầu của cả khách hàng và đội phát triển. Cách cấu hình rất giống với các phần trước. Cấu hình
 mạng của bạn sẽ trông như sau:
-<!-- TODO: Sơ đồ 2 Transit Gateway kết nối với nhau thông qua peering, có bảng định tuyến (khó vẽ) -->
+![Diagram](/images/6-cross-account-cross-region/cross_account_cross_region.svg)
 
 #### Nội dung
 

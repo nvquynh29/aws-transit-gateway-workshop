@@ -7,8 +7,7 @@ pre : " <b> 1. </b> "
 ---
 In this section we will learn about AWS Transit Gateway and its routing mechanism.
 
-![AWS Transit Gateway](/images/1-introduction/aws_transit_gateway_official_docs.png)
-Source: [AWS official documentation](https://aws.amazon.com/transit-gateway/)
+![AWS Transit Gateway](/images/1-introduction/transit_gateway_routing_mechanism.png)
 
 #### Content
 

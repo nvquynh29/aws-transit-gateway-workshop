@@ -57,7 +57,6 @@ Chọn **dev-att** rồi bấm **Create association**
   ![Multiple route tables](/images/3-single-account-single-region/multiple_route_table_11.png)
 
 5\. Tạo propagation
-<!-- TODO: Update tại sao cần propagation ở đây -->
 - Tại giao diện transit gateway route tables, chọn **dev-tgw-rtb**
 - Chọn tab **Propagations** rồi bấm **Create propagation**
 ![Multiple route tables](/images/3-single-account-single-region/multiple_route_table_12.png)

@@ -19,7 +19,7 @@ so errors may occur when customer use it. Instead, you should configure to conne
 Test environment has been carefully tested and the Dev environment is using the same data source with this environment 
 so it can meet the requirements of both customer company and development team. The configuration is very similar to the 
 previous sections. Your network configuration will look like this:
-<!-- TODO: Sơ đồ 2 Transit Gateway kết nối với nhau thông qua peering, có bảng định tuyến (khó vẽ) -->
+![Diagram](/images/6-cross-account-cross-region/cross_account_cross_region.svg)
 
 #### Content
 

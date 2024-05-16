@@ -22,7 +22,7 @@ with many customers so their network configuration has become very complex, they
 additional network configuration when connecting to your company's network. In this case, you can use an AWS service called 
 **AWS Resource Access Manager (AWS RAM)** to simplifies the network configuration for the partner company. Please note that 
 you can only use this service to connect VPCs located in the same region. Your network configuration will look like this:
-<!-- TODO: Thêm sơ đồ share AWS TGW qua AWS RAM (2 region đều có hình TGW) -->
+![Diagram](/images/5-cross-account-single-region/cross_account_single_region.svg)
 
 #### Content
 

@@ -62,7 +62,7 @@ Tạo transit gateway route table mới **partner-tgw-rtb** trong tài khoản t
 ![Configure route tables](/images/5-cross-account-single-region/configure_route_tables_7.png)
 Xoá association giữa **partner-att** và **default-tgw-rtb**
 ![Configure route tables](/images/5-cross-account-single-region/configure_route_tables_8.png)
-<!-- TODO: Add note to show that user can update transit gateway config but this demo want to show errors -->
+
 Thêm association giữa bảng định tuyến **partner-tgw-rtb** với **partner-att**
 ![Configure route tables](/images/5-cross-account-single-region/configure_route_tables_9.png)
 ![Configure route tables](/images/5-cross-account-single-region/configure_route_tables_10.png)

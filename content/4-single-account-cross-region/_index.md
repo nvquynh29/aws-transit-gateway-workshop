@@ -18,7 +18,7 @@ the database and cache, similar to the previous section.
 The branch has already prepared a VPC named Branch and a Transit Gateway. Your task is to connect the Branch VPC to the Share VPC. 
 Similar to the previous section, you could use VPC Peering. However, in this section, you will explore an alternative 
 approach using AWS Transit Gateway. The network configuration will look as follows:
-<!-- TODO: Sơ đồ 2 Transit Gateway kết nối với nhau thông qua peering, có bảng định tuyến (khó vẽ) -->
+![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
 #### Content
 

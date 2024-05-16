@@ -13,6 +13,7 @@ và tận dụng các chức năng của AWS Transit Gateway trong mạng đám 
 Thông qua một loạt các bài tập thực hành và các tình huống thực tế, bạn sẽ hiểu sâu hơn về các chức năng của nó
 và kỹ thuật cấu hình. Khi hoàn thành workshop, bạn sẽ trở nên tự tin hơn khi làm việc với công cụ mạng mạnh mẽ này,
 sẵn sàng khai thác khả năng của nó để kết nối các VPC Amazon của bạn một cách dễ dàng.
+![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
 #### Nội dung
 

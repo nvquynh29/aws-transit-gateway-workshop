@@ -17,6 +17,7 @@ ready to harness its capabilities to connect your Amazon VPCs with ease.
 By participating in this workshop, you'll unlock the power of AWS Transit Gateway, transforming your cloud networking capabilities
 and enabling seamless connectivity across your diverse network infrastructure. With hands-on learning, you'll emerge as 
 a confident Transit Gateway user, prepared to tackle networking challenges.
+![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
 #### Content
 

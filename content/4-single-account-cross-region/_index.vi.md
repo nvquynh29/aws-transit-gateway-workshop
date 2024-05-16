@@ -16,7 +16,7 @@ kiệm thời gian và chi phí, bạn muốn sử dụng Share VPC để chia s
 Chi nhánh đó đã chuẩn bị sẵn một VPC tên là Branch và một Transit Gateway. Việc của bạn là kết nối Branch VPC với Share VPC 
 để chia sẻ tài nguyên. Tương tự như phần trước, bạn hoàn toàn có thể sử dụng VPC Peering. Nhưng trong phần này, chúng ta 
 sẽ cùng tìm hiểu một cách cấu hình khác đó là dùng AWS Transit Gateway. Khi đó, cấu hình mạng của bạn sẽ trông như sau:
-<!-- TODO: Sơ đồ 2 Transit Gateway kết nối với nhau thông qua peering, có bảng định tuyến (khó vẽ) -->
+![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
 #### Nội dung
 

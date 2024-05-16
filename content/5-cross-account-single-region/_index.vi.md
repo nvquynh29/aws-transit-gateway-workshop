@@ -23,7 +23,7 @@ tác với nhiều khách hàng nên cấu hình mạng của họ đã trở n�
 cấu hình mạng khi kết nối với mạng của công ty bạn. Trong trường hợp này, bạn có thể sử dụng một dịch vụ của AWS là
 **AWS Resource Access Manager (AWS RAM)**. Hãy lưu ý rằng bạn chỉ có thể sử dụng dịch vụ này để kết nối các VPC nằm trong 
 cùng một region. Khi đó, cấu hình mạng của bạn sẽ trông như sau:
-<!-- TODO: Thêm sơ đồ share AWS TGW qua AWS RAM (2 region đều có hình TGW) -->
+![Diagram](/images/5-cross-account-single-region/cross_account_single_region.svg)
 
 #### Nội dung
 

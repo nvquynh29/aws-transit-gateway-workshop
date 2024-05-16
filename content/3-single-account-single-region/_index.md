@@ -19,7 +19,7 @@ You need to configure routing for Dev VPC and Test VPC to connect to Share VPC.
 For scenarios with a small number of VPC connections, VPC Peering is often the preferred choice. However, in this workshop, 
 you will explore an alternative approach using AWS Transit Gateway. To simplify the deployment, we will only deploy one 
 EC2 instance in each VPC to test network connectivity. We will configure the network as follows:
-<!-- TODO: Sơ đồ 3 VPC kết nối với nhau thông qua VPC, có bảng định tuyến -->
+![Diagram](/images/3-single-account-single-region/single_account_single_region.svg)
 
 #### Content
 
