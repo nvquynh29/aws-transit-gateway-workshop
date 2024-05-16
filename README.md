@@ -33,11 +33,3 @@ Upon completing this workshop, you will gain proficiency in working with AWS Tra
 Head over to the live workshop and dive into the hands-on scenarios: [AWS Transit Gateway Workshop](https://nvquynh29.github.io/aws-transit-gateway-workshop)
 
 Let's unlock the potential of your cloud network with AWS Transit Gateway!
-
-
-
-Today I'm incredibly excited to share with you my very first AWS workshop: Unleash the Power of AWS Transit Gateway!
-
-This workshop empowers you to manage complex cloud networks with ease. Through hands-on labs, you'll gain the skills to confidently configure VPC connections across various scenarios.
-
-Ready to level up your AWS game? Head over to: Live Workshop Link  #AWS #CloudNetworking #Workshop
