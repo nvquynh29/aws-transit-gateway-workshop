@@ -18,6 +18,12 @@ Chi nhánh đó đã chuẩn bị sẵn một VPC tên là Branch và một Tran
 sẽ cùng tìm hiểu một cách cấu hình khác đó là dùng AWS Transit Gateway. Khi đó, cấu hình mạng của bạn sẽ trông như sau:
 ![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
+Trông sơ đồ này rất phức tạp phải không, hãy sử dụng những kiến thức về Route table association và Route propagation trong
+phần giới thiệu để giải thích đồ này. Hãy hiểu đơn giản là lưu lượng truy cập sẽ đi từ Share VPC đến Tokyo TGW rồi sau
+đó đi tới Singapore TGW thông qua Peering Attachment. Sau khi lưu lượng truy cập đến được đây thì nó sẽ tiếp tục được 
+định tuyến đến Branch VPC.
+
+
 #### Nội dung
 
 1. [Chuẩn bị](4.1-preparation/)

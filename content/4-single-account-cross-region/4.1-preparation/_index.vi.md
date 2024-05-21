@@ -15,6 +15,7 @@ Phần triển khai này rất giống với phần trước, chỉ có một v�
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_1.png)
 
 Điền các tham số như sau:
+- Stack name: `BranchVPC`
 - EC2InstanceAMIId: Chọn AMI ID của **Amazon Linux 2023**
 - SubnetCidr: `10.4.0.0/24`
 - VPCCidr: `10.4.0.0/16`
