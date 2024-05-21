@@ -15,6 +15,7 @@ This step is very similar to the preparation step of previous section, with just
 ![Deploy CloudFormation Stack](/images/4-single-account-cross-region/preparation_1.png)
 
 Fill in the parameters as follows:
+- Stack name: `BranchVPC`
 - EC2InstanceAMIId: AMI ID of **Amazon Linux 2023**
 - SubnetCidr: `10.4.0.0/24`
 - VPCCidr: `10.4.0.0/16`

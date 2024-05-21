@@ -39,10 +39,10 @@ Due to these advantages, AWS Transit Gateway has become a popular choice for lar
 ![AWS Transit Gateway](/images/1-introduction/aws_transit_gateway.svg)
 
 To effectively utilize Transit Gateway, it's crucial to understand the different scenarios involved:
-- VPCs in the same AWS Account and Region
-- VPCs in the Same AWS Account, Different Regions
-- VPCs in Different AWS Accounts, Same Region
-- VPCs in Different AWS Accounts, Different Regions
+- VPCs in the same AWS Account and region
+- VPCs in the same AWS Account, different regions
+- VPCs in different AWS Accounts, same region
+- VPCs in different AWS Accounts, different regions
 
 By understanding these scenarios, you can effectively utilize AWS Transit Gateway to connect multiple VPCs across 
 various configurations, simplifying network management and enhancing network performance for complex cloud deployments.

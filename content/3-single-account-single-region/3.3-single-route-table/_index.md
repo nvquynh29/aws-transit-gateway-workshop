@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 3.3 </b> "
 ---
 
-In this step, we will configure routing for Dev VPC, Test VPC to connect to the Share VPC using only the default routing table.
+In this step, we will configure routing for Dev VPC, Test VPC to connect to the Share VPC using only the default route table.
 
 #### Check the connection between EC2 instances
 1\. Connect to **dev** instance
@@ -52,7 +52,6 @@ The results show that it is possible to connect from the **dev** instance to the
 Dev VPC and Share VPC can connect to each other through transit gateway.
 ![Single route table](/images/3-single-account-single-region/single_route_table_9.png)
 
-#### Cấu hình bảng định tuyến cho Test VPC
-Lặp lại các bước trên để cấu hình bảng định tuyến cho **test-vpc** VPC. Sau khi cấu hình xong, bạn có thể kiểm tra cấu 
-hình của mình bằng cách kết nối từ máy ảo **test** đến máy ảo **share** như sau.
+#### Configure routing for Test VPC
+Repeat the above steps to configure the connection between Test VPC and Share VPC and test your configuration.
 ![Single route table](/images/3-single-account-single-region/single_route_table_10.png)

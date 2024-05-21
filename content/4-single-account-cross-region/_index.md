@@ -20,6 +20,11 @@ Similar to the previous section, you could use VPC Peering. However, in this sec
 approach using AWS Transit Gateway. The network configuration will look as follows:
 ![Diagram](/images/4-single-account-cross-region/single_account_cross_region.svg)
 
+At first glance, the network diagram might seem intricate, but let's break it down using the concepts of Route Table Association and Route Propagation introduced earlier.
+
+Imagine traffic originating from the Share VPC embarking on a journey through the network. Its first stop is the Tokyo TGW, where it's greeted by the peering attachment connecting it to the Singapore TGW. This attachment acts as a bridge, allowing the traffic to seamlessly traverse to the Singapore TGW. Upon arrival at the Singapore TGW, the traffic encounters Branch VPC route table that directs it towards the Branch VPC. This route table, acting as a traffic guide, ensures that the data reaches its intended destination.
+
+
 #### Content
 
 1. [Preparation](4.1-preparation/)

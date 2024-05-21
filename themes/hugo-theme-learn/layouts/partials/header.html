@@ -22,9 +22,8 @@
     <meta property="og:image" content="https://nvquynh29.github.io/aws-transit-gateway-workshop/images/thumbnail.png" />
     
     {{ hugo.Generator }}
-    {{ partial "meta.html" . }}
     {{ partial "favicon.html" . }}
-    <title>{{ .Title }} :: {{ .Site.Title }}</title>
+    <title>{{ .Title }}</title>
 
     {{ $assetBusting := not .Site.Params.disableAssetsBusting }}
     <link href="{{"css/nucleus.css" | relURL}}{{ if $assetBusting }}?{{ now.Unix }}{{ end }}" rel="stylesheet">
